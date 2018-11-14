@@ -1,0 +1,20 @@
+-- 修改数据库编码
+ALTER DATABASE db_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- 修改表，及其字段的编码格式
+ALTER TABLE table_name CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- 只修改表的字符集
+ALTER TABLE table_name DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- 修改字段的字符集
+ALTER TABLE table_name CHANGE column_name column_name VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- 查看数据库编码
+SHOW CREATE DATABASE db_name;
+
+-- 查看表编码
+SHOW CREATE TABLE tbl_name;
+
+-- 查看字段编码
+SHOW FULL COLUMNS FROM tbl_name;
