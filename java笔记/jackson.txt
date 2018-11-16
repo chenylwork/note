@@ -1,0 +1,4 @@
+×Ö·û´®×ª»»ÎªList<T>
+ObjectMapper mapper = new ObjectMapper();
+JavaType jt = mapper.getTypeFactory().constructParametricType(ArrayList.class, LinkMan.class);
+List<LinkMan> linkManList = mapper.readValue(mapper.writeValueAsString(linkMans), jt);

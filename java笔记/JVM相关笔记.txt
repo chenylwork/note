@@ -1,0 +1,13 @@
+jps -lvm 用于查看当前机器上运行的java进程
+
+jstack -l pid ：我们使用 jstack -l 6812 查看我们的应用堆栈信息:
+
+
+》》》》》》》》》》》项目启动参数
+java  
+-Dcom.sun.management.jmxremote=true 开启JVM远程监控
+-Dcom.sun.management.jmxremote.port=60001 远程监控端口号
+-Dcom.sun.management.jmxremote.authenticate=false 密码验证：false为不需要验证
+-Dcom.sun.management.jmxremote.ssl=false 是否禁用ssl验证，是否禁用ssl验证
+-Djava.rmi.server.hostname=192.168.91.166，远程进程所在主机的IP
+-jar C:\Users\Administrator\Desktop\borrow.jar	执行的jar文件
