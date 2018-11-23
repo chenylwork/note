@@ -1,0 +1,46 @@
+my.ini文件内容
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8 
+[mysqld]
+#设置3306端口
+port = 3306 
+# 设置mysql的安装目录
+basedir=C:\mysql-5.7.12-winx64
+# 设置mysql数据库的数据的存放目录
+datadir=C:\mysql-5.7.12-winx64\data
+# 允许最大连接数
+max_connections=200
+# 服务端使用的字符集默认为8比特编码的latin1字符集
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 跳过密码验证
+--skip-grant-tables 
+
+准备：在解压目录下创建my.ini文件
+
+1、初始化以管理员身份运行cmd，并cd到mysql中的bin目录下，执行命令：mysqld --initialize --user=mysql --console
+该命令会创建data目录与数据库，生成root用户和临时密码，如下图，我们需要记住这个命令以便于登录。
+
+2、安装mysql服务输入mysqld -install, 成功会显示Service successfully installed
+
+3、修改root密码：打开DOS窗口，转到mysql\bin目录。输入mysqld --skip-grant-tables 回车。--skip-grant-tables 的
+意思是启动MySQL服务的时候跳过权限表认证。 
+
+4. 再开一个DOS窗口（因为刚才那个DOS窗口已经不能动了），转到mysql\bin目录。 输入mysql -u root -p 回车，如果成功，将出现MySQL提示符 >。 
+
+5. 连接权限数据库： use mysql;
+ 
+6. 改密码：
+	update user set password=password("root") where user="root";（别忘了最后加分号） 。 （5.7之前）
+	update user set authentication_string=password("root") where user="root";（别忘了最后加分号） 。 （5.7之后）
+7、【开启远程登录】
+	update user set host = '%' where user="root";
+
+8. 刷新权限（必须步骤）：flush privileges;
+
+9. 退出 quit。 
+
+10. 重启mysql服务，再进入，使用用户名root和刚才设置的新密码root登录

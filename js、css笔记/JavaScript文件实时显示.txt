@@ -1,0 +1,12 @@
+$(".qr_file").change(function(){
+	var file = $(this).prop('files')[0];
+	var prefix = $(this).parents(".img_div").data("prefix");
+	var reader = new FileReader();
+	reader.readAsBinaryString(file);
+	reader.onload = function(f){
+		var src = "data:" + file.type + ";base64," + window.btoa(this.result);
+		console.log("#"+prefix+"_img");
+		$("#"+prefix+"_img").attr("src",src);
+	}
+});
+	
