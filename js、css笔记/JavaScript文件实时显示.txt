@@ -1,12 +1,16 @@
-$(".qr_file").change(function(){
-	var file = $(this).prop('files')[0];
-	var prefix = $(this).parents(".img_div").data("prefix");
+<input type="file" name="file" onchange="load_head_img()" id="head_img_file">
+<img src="images/head.jpg" onclick="choose_head_img()" id="show_head_img">
+
+var choose_head_img = function () {
+  $("#head_img_file").click();
+}
+
+var load_head_img = function() {
+	var file = $("#head_img_file").prop('files')[0];
 	var reader = new FileReader();
 	reader.readAsBinaryString(file);
 	reader.onload = function(f){
 		var src = "data:" + file.type + ";base64," + window.btoa(this.result);
-		console.log("#"+prefix+"_img");
-		$("#"+prefix+"_img").attr("src",src);
+		$("#show_head_img").attr("src",src);
 	}
-});
-	
+}

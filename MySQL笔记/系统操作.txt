@@ -1,0 +1,19 @@
+获取系统时间
+1、select now() --yyyy-MM-dd HH:mm:ss
+
+2、select sysdate()  --yyyy-MM-dd HH:mm:ss
+
+3、select current_date  --yyyy-MM-dd
+
+二、日期转字符串
+
+mysql> select date_format(now(),'%Y');
+mysql> select date_format(now(),'%Y-%c-%d %h:%i:%s');
+
+扩展：
+%Y：年
+%c：月
+%d：日
+%H：小时
+%i：分钟
+%s：秒

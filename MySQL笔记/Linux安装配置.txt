@@ -1,4 +1,4 @@
-/usr/local/tools/mysql-5.7.24/bin/mysql_install_db --user=mysql --basedir=/usr/local/tools/mysql-5.7.24 --datadir=/usr/local/tools/mysql-5.7.24/data
+﻿/usr/local/tools/mysql-5.7.24/bin/mysql_install_db --user=mysql --basedir=/usr/local/tools/mysql-5.7.24 --datadir=/usr/local/tools/mysql-5.7.24/data
 
 /usr/local/tools/mysql-5.7.24/bin/mysqld --user=mysql --basedir=/usr/local/tools/mysql-5.7.24 --datadir=/usr/local/tools/mysql-5.7.24/data --initialize
 
@@ -62,10 +62,10 @@ yum -y install numactl
 # 完成后继续安装：
 /usr/local/mysql/bin/mysqld --user=mysql --basedir=/usr/local/mysql/ --datadir=/usr/local/mysql/data --initialize
 
-# 编辑/etc/my.cnf
+# 编辑/etc/my.cnf,只修改basedir和datadir其他的不需要动
 [mysqld]
-datadir=/usr/local/mysql/data
 basedir=/usr/local/mysql
+datadir=/usr/local/mysql/data
 socket=/tmp/mysql.sock
 user=mysql
 port=3306
@@ -81,7 +81,7 @@ pid-file=/var/run/mysqld/mysqld.pid
 
 7、开启服务
 # 将mysql加入服务
-cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
+cp /usr/local/tools/mysql-5.7.24/support-files/mysql.server /etc/init.d/mysql
 
 # 开机自启
 chkconfig mysql on
